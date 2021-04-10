@@ -5,6 +5,7 @@
   grid-auto-flow: column;
   grid-auto-columns: 90%;
   gap: 1em;
+  grid-row-gap: 2rem;
   list-style: none;
   grid-auto-flow: initial;
   grid-template-columns: repeat(auto-fit, minmax(auto, 20em));
