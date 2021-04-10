@@ -8,14 +8,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { LoginComponent } from './pages/login/login.component';
 import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MainComponent } from './shared/layouts/main/main.component';
 import { AlbumsComponent } from './pages/albums/albums.component';
 import { MainHeaderComponent } from './shared/components/main-header/main-header.component';
 import { AlbumComponent } from './pages/albums/album/album.component';
+import { PhotosComponent } from './pages/photos/photos.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, MainComponent, AlbumsComponent, MainHeaderComponent, AlbumComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatButtonModule, MatCardModule, MatInputModule],
+  declarations: [AppComponent, LoginComponent, MainComponent, AlbumsComponent, MainHeaderComponent, AlbumComponent, PhotosComponent],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatButtonModule, MatCardModule, MatInputModule, MatGridListModule],
   providers: [],
   bootstrap: [AppComponent]
 })
