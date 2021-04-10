@@ -17,7 +17,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'albums', pathMatch: 'full' },
       { path: 'albums', component: AlbumsComponent, canActivate: [AuthGuard] },
-      { path: 'photos', component: PhotosComponent, canActivate: [AuthGuard] }
+      { path: 'albums/:id/photos', component: PhotosComponent, canActivate: [AuthGuard] }
     ]
   }
 ];

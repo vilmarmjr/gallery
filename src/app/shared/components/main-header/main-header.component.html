@@ -1,7 +1,7 @@
 <header class="main-header-container">
   <div>
-    <h1 class="title">MY ALBUMS</h1>
-    <span class="subtitle">HOME &bull; 10 ALBUMS</span>
+    <h1 class="title"><ng-content select="[mainHeaderTitle]"></ng-content></h1>
+    <span class="subtitle"><ng-content select="[mainHeaderSubtitle]"></ng-content></span>
   </div>
   <div class="user-details">
     <img class="user-image" alt="User image" src="../../../../assets/images/user.svg" />

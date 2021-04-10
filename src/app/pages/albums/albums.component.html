@@ -1,4 +1,7 @@
-<app-main-header></app-main-header>
+<app-main-header>
+  <span mainHeaderTitle>MY ALBUMS</span>
+  <span mainHeaderSubtitle>HOME &bull; 10 ALBUMS</span>
+</app-main-header>
 <div class="albums-container">
   <app-album *ngFor="let album of albums$ | async" [album]="album"></app-album>
 </div>
