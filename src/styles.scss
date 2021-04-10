@@ -1,11 +1,12 @@
 @import 'assets/styles/theme.scss';
 
-html,
-body {
-  height: 100vh;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+  height: 100vh;
 }
