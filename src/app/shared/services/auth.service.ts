@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error';
 import { User } from '../models/user.model';
 
@@ -32,15 +33,16 @@ export class AuthService {
     return of(localStorage.removeItem(this.fakeAuthTokenKey));
   }
 
-  getUser(): Observable<User> {
-    try {
-      const token = localStorage.getItem(this.fakeAuthTokenKey);
+  getLoggedUser(): Observable<User> {
+    const token = localStorage.getItem(this.fakeAuthTokenKey);
 
-      if (token && token === this.fakeAuthToken) {
-        return of(this.fakeUser);
-      }
-    } catch (error) {
-      return null;
+    if (token && token === this.fakeAuthToken) {
+      return of(this.fakeUser);
     }
+    return of(null);
+  }
+
+  isUserLoggedIn(): Observable<boolean> {
+    return this.getLoggedUser().pipe(map(user => !!user));
   }
 }

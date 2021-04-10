@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
         return alert(result.message);
       }
 
-      this.router.navigate(['albums']);
+      this.router.navigate(['/albums']);
     });
   }
 
