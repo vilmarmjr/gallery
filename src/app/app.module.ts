@@ -11,9 +11,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MainComponent } from './shared/layouts/main/main.component';
 import { AlbumsComponent } from './pages/albums/albums.component';
 import { MainHeaderComponent } from './shared/components/main-header/main-header.component';
+import { AlbumComponent } from './pages/albums/album/album.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, MainComponent, AlbumsComponent, MainHeaderComponent],
+  declarations: [AppComponent, LoginComponent, MainComponent, AlbumsComponent, MainHeaderComponent, AlbumComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatButtonModule, MatCardModule, MatInputModule],
   providers: [],
   bootstrap: [AppComponent]

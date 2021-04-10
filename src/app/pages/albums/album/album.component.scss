@@ -1,0 +1,28 @@
+@import '../../../../assets/styles/colors.scss';
+
+.album-container {
+  display: flex;
+  align-items: center;
+  color: $text-color;
+
+  .album-thumbnail {
+    width: 6.25rem;
+  }
+
+  .album-details {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    .album-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .album-description {
+      font-weight: 200;
+      font-size: 0.75rem;
+    }
+  }
+}
