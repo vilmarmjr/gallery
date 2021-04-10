@@ -1,0 +1,57 @@
+@import '../../../assets/styles/colors.scss';
+
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  background: $background-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../../assets/images/login-image-left.svg'), url('../../../assets/images/login-image-right.svg');
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: fixed, fixed;
+  background-size: 25rem, 25rem;
+  background-position: left bottom, right bottom;
+
+  .card {
+    width: 37rem;
+    padding: 3rem 2.5rem;
+    margin-bottom: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-weight: 500;
+    }
+
+    p {
+      margin-bottom: 1.7rem;
+      color: $text-color;
+    }
+  }
+
+  .form-field,
+  .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 730px) {
+  .login-container .card {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 800px) {
+  .login-container {
+    background-image: none;
+  }
+}
+
+@media (max-width: 1440px) {
+  .login-container {
+    background-size: 15rem;
+  }
+}
