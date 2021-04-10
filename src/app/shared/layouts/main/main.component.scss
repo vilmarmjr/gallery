@@ -1,0 +1,23 @@
+@import '../../../../assets/styles/colors.scss';
+
+.main-container {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to bottom, $primary-color 15%, $background-color 0%);
+  position: relative;
+
+  .card {
+    position: absolute;
+    width: 85%;
+    height: 85%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    .main {
+      padding: 3rem;
+    }
+  }
+}
