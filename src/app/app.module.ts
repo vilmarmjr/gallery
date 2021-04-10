@@ -14,10 +14,20 @@ import { AlbumsComponent } from './pages/albums/albums.component';
 import { MainHeaderComponent } from './shared/components/main-header/main-header.component';
 import { AlbumComponent } from './pages/albums/album/album.component';
 import { PhotosComponent } from './pages/photos/photos.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, MainComponent, AlbumsComponent, MainHeaderComponent, AlbumComponent, PhotosComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatButtonModule, MatCardModule, MatInputModule, MatGridListModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    MatGridListModule,
+    ReactiveFormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

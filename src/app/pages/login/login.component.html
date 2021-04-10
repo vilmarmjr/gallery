@@ -2,14 +2,20 @@
   <mat-card class="card">
     <h1>Welcome to your Gallery!</h1>
     <p>To see all your albums and photos, please sign in using your email and password.</p>
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Email</mat-label>
-      <input matInput type="email" />
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Password</mat-label>
-      <input matInput type="password" />
-    </mat-form-field>
-    <button mat-raised-button color="accent" class="button">Login</button>
+    <form [formGroup]="form">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+        <mat-error *ngIf="form.hasError('email', 'email') || form.hasError('required', 'email')"
+          >Please enter a valid email address</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" />
+        <mat-error *ngIf="form.hasError('required', 'password')">Please enter a valid password</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="accent" class="button" [disabled]="form.invalid">Login</button>
+    </form>
   </mat-card>
 </div>
