@@ -10,9 +10,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { MatInputModule } from '@angular/material/input';
 import { MainComponent } from './shared/layouts/main/main.component';
 import { AlbumsComponent } from './pages/albums/albums.component';
+import { MainHeaderComponent } from './shared/components/main-header/main-header.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, MainComponent, AlbumsComponent],
+  declarations: [AppComponent, LoginComponent, MainComponent, AlbumsComponent, MainHeaderComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatButtonModule, MatCardModule, MatInputModule],
   providers: [],
   bootstrap: [AppComponent]
