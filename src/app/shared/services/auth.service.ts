@@ -1,7 +1,5 @@
-import { sign, verify } from 'jsonwebtoken';
 import { Injectable } from '@angular/core';
-import { from, Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error';
 import { User } from '../models/user.model';
 
@@ -16,14 +14,15 @@ export class AuthService {
   };
   private fakeUserPassword = '1234';
   private fakeAuthTokenKey = 'auth_token';
-  private fakeJwtSecret = 'any_secret';
+  private fakeAuthToken =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
 
   constructor() {}
 
   login(email: string, password: string): Observable<string | InvalidCredentialsError> {
     if (email === this.fakeUser.email && password === this.fakeUserPassword) {
-      const jwtPromise = sign(this.fakeUser, this.fakeJwtSecret);
-      return from(jwtPromise).pipe(tap((token: string) => localStorage.setItem(this.fakeAuthTokenKey, token)));
+      localStorage.setItem(this.fakeAuthTokenKey, this.fakeAuthToken);
+      return of(this.fakeAuthToken);
     }
 
     return of(new InvalidCredentialsError());
@@ -37,9 +36,8 @@ export class AuthService {
     try {
       const token = localStorage.getItem(this.fakeAuthTokenKey);
 
-      if (token) {
-        const user = verify(token, this.fakeJwtSecret) as User;
-        return of(user);
+      if (token && token === this.fakeAuthToken) {
+        return of(this.fakeUser);
       }
     } catch (error) {
       return null;
