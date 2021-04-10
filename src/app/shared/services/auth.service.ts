@@ -2,20 +2,20 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error';
-import { User } from '../models/user.model';
+import { UserModel } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private fakeUser: User = {
+  private readonly fakeUser: UserModel = {
     id: 1,
     name: 'User',
     email: 'user@user.com'
   };
-  private fakeUserPassword = '1234';
-  private fakeAuthTokenKey = 'auth_token';
-  private fakeAuthToken =
+  private readonly fakeUserPassword = '1234';
+  private readonly fakeAuthTokenKey = 'auth_token';
+  private readonly fakeAuthToken =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
 
   constructor() {}
@@ -33,7 +33,7 @@ export class AuthService {
     return of(localStorage.removeItem(this.fakeAuthTokenKey));
   }
 
-  getLoggedUser(): Observable<User> {
+  getLoggedUser(): Observable<UserModel> {
     const token = localStorage.getItem(this.fakeAuthTokenKey);
 
     if (token && token === this.fakeAuthToken) {

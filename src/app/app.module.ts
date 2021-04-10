@@ -12,9 +12,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MainComponent } from './shared/layouts/main/main.component';
 import { AlbumsComponent } from './pages/albums/albums.component';
 import { MainHeaderComponent } from './shared/components/main-header/main-header.component';
-import { AlbumComponent } from './pages/albums/album/album.component';
 import { PhotosComponent } from './pages/photos/photos.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AlbumComponent } from './pages/albums/components/album/album.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, MainComponent, AlbumsComponent, MainHeaderComponent, AlbumComponent, PhotosComponent],
@@ -26,7 +28,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     MatInputModule,
     MatGridListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
