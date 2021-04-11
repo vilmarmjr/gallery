@@ -17,8 +17,8 @@
     <div class="user-details">
       <mat-icon class="user-icon">person</mat-icon>
       <div>
-        <span class="user-name">User</span>
-        <span class="user-email">user@user.com</span>
+        <span class="user-name">{{ loggedUser?.name }}</span>
+        <span class="user-email">{{ loggedUser?.email }}</span>
       </div>
     </div>
     <button mat-menu-item (click)="logout()">
