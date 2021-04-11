@@ -17,6 +17,7 @@ export class PhotosComponent implements OnInit {
   album: AlbumModel;
   photos: Photo[];
   numberOfPhotosPerAlbum = 50;
+  isLoading = true;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -36,7 +37,11 @@ export class PhotosComponent implements OnInit {
   }
 
   private fetchPhotos(page = 1, limit = 10): void {
-    this.photosService.fetchPhotos(this.getAlbumIdFromUrl(), { page, limit }).subscribe(photos => (this.photos = photos));
+    this.isLoading = true;
+    this.photosService
+      .fetchPhotos(this.getAlbumIdFromUrl(), { page, limit })
+      .subscribe(photos => (this.photos = photos))
+      .add(() => (this.isLoading = false));
   }
 
   private fetchAlbum(): void {

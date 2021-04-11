@@ -2,8 +2,8 @@
   <span mainHeaderTitle>MEUS ÁLBUNS</span>
   <span mainHeaderSubtitle>INÍCIO &bull; {{ numberOfAlbums }} ÁLBUNS</span>
 </app-main-header>
-<app-spinner *ngIf="!albums"></app-spinner>
-<div class="albums-container" *ngIf="albums">
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div class="albums-container" *ngIf="!isLoading">
   <app-album *ngFor="let album of albums" [album]="album" (click)="navigateToPhotosPage($event)"></app-album>
 </div>
-<mat-paginator [length]="numberOfAlbums" [pageSize]="albums?.length" [hidePageSize]="true" *ngIf="albums"></mat-paginator>
+<mat-paginator [length]="numberOfAlbums" [pageSize]="albums?.length" [hidePageSize]="true"></mat-paginator>

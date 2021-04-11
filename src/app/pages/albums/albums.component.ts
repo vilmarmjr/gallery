@@ -15,6 +15,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class AlbumsComponent implements OnInit {
   albums: AlbumModel[];
   numberOfAlbums = 10;
+  isLoading = true;
 
   constructor(
     private readonly router: Router,
@@ -33,13 +34,15 @@ export class AlbumsComponent implements OnInit {
   }
 
   private fetchAlbums(): void {
+    this.isLoading = true;
     this.authService
       .getLoggedUser()
       .pipe(
         mergeMap(user => this.albumsService.fetchAlbums(user.id)),
         mergeMap(albums => forkJoin(albums.map(this.getAlbumWithThumbnail.bind(this))))
       )
-      .subscribe(albums => (this.albums = albums));
+      .subscribe(albums => (this.albums = albums))
+      .add(() => (this.isLoading = false));
   }
 
   private getAlbumWithThumbnail(album: AlbumModel): Observable<AlbumModel> {
