@@ -2,7 +2,8 @@
   <span mainHeaderTitle>{{ album?.title }}</span>
   <span mainHeaderSubtitle>ÁLBUM &bull; {{ numberOfPhotosPerAlbum }} FOTOS</span>
 </app-main-header>
-<ul class="photos-container">
+<app-spinner *ngIf="!photos"></app-spinner>
+<ul class="photos-container" *ngIf="photos">
   <li *ngFor="let photo of photos">
     <figure class="figure">
       <img [src]="photo.thumbnailUrl" [alt]="photo.title" />
@@ -11,9 +12,9 @@
   </li>
 </ul>
 <mat-paginator
+  *ngIf="photos"
   [length]="numberOfPhotosPerAlbum"
   [pageSize]="photos?.length"
   [hidePageSize]="true"
   (page)="fetchPhotosFromPageEvent($event)"
->
-</mat-paginator>
+></mat-paginator>

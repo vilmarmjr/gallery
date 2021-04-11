@@ -24,9 +24,21 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorPtService } from './shared/services/mat-paginator-pt.service';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, MainComponent, AlbumsComponent, MainHeaderComponent, AlbumComponent, PhotosComponent, NotFoundComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    MainComponent,
+    AlbumsComponent,
+    MainHeaderComponent,
+    AlbumComponent,
+    PhotosComponent,
+    NotFoundComponent,
+    SpinnerComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,6 +54,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     MatIconModule,
     MatMenuModule,
     MatTooltipModule,
+    MatProgressSpinnerModule,
     ToastrModule.forRoot()
   ],
   providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorPtService }],
