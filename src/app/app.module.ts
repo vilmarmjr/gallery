@@ -9,9 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { LoginComponent } from './pages/login/login.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MainComponent } from './shared/layouts/main/main.component';
 import { AlbumsComponent } from './pages/albums/albums.component';
-import { MainHeaderComponent } from './shared/components/main-header/main-header.component';
 import { PhotosComponent } from './pages/photos/photos.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlbumComponent } from './pages/albums/components/album/album.component';
@@ -22,16 +20,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ToastrModule } from 'ngx-toastr';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatPaginatorPtService } from './shared/services/mat-paginator-pt.service';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { MainHeaderComponent } from './components/main-header/main-header.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { MatPaginatorPtService } from './services/mat-paginator-pt.service';
+import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MainComponent,
+    MainLayoutComponent,
     AlbumsComponent,
     MainHeaderComponent,
     AlbumComponent,

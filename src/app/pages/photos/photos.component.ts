@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
-import { AlbumNotFoundError } from 'src/app/shared/errors/album-not-found-error';
-import { AlbumModel } from 'src/app/shared/models/album.model';
-import { Photo } from 'src/app/shared/models/photo.model';
-import { AlbumsService } from 'src/app/shared/services/albums.service';
-import { PhotosService } from 'src/app/shared/services/photos.service';
+import { AlbumNotFoundError } from 'src/app/errors/album-not-found-error';
+import { AlbumModel } from 'src/app/models/album.model';
+import { Photo } from 'src/app/models/photo.model';
+import { AlbumsService } from 'src/app/services/albums.service';
+import { PhotosService } from 'src/app/services/photos.service';
 
 @Component({
   selector: 'app-photos',

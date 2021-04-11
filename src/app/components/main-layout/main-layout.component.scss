@@ -1,4 +1,4 @@
-@import '../../../../assets/styles/colors.scss';
+@import '../../../assets/styles/colors.scss';
 
 .main-container {
   height: 100vh;
@@ -45,6 +45,6 @@
 
 @media (max-width: 720px) {
   .main-container .card .main {
-    padding: 0.7rem;
+    padding: 1rem;
   }
 }

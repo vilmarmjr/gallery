@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AlbumModel } from 'src/app/shared/models/album.model';
+import { AlbumModel } from 'src/app/models/album.model';
 
 @Component({
   selector: 'app-album',

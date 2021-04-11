@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
-import { AlbumsService } from 'src/app/shared/services/albums.service';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { PhotosService } from 'src/app/shared/services/photos.service';
-import { AlbumModel } from '../../shared/models/album.model';
+import { AlbumModel } from 'src/app/models/album.model';
+import { AlbumsService } from 'src/app/services/albums.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { PhotosService } from 'src/app/services/photos.service';
 
 @Component({
   selector: 'app-albums',

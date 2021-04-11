@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { InvalidCredentialsError } from 'src/app/shared/errors/invalid-credentials-error';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { InvalidCredentialsError } from 'src/app/errors/invalid-credentials-error';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
