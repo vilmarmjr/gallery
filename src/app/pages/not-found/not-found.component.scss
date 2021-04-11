@@ -15,13 +15,6 @@
   }
 
   a {
-    text-decoration: none;
     margin-top: 0.2rem;
-    color: $primary-color;
-    display: inline-block;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 }
