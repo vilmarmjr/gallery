@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 import { EmailAlreadyExistsError } from '../errors/email-already-exists-error';
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error';
+import { UnmatchingPasswordsError } from '../errors/unmatching-passwords-error';
 import { UserModel } from '../models/user.model';
 
 export abstract class AuthService {
@@ -8,5 +9,10 @@ export abstract class AuthService {
   abstract logout(): Observable<void>;
   abstract getLoggedUser(): Observable<UserModel>;
   abstract isUserLoggedIn(): Observable<boolean>;
-  abstract register(name: string, email: string, password: string): Observable<UserModel | EmailAlreadyExistsError>;
+  abstract register(
+    name: string,
+    email: string,
+    password: string,
+    passwordConfirmation: string
+  ): Observable<UserModel | EmailAlreadyExistsError | UnmatchingPasswordsError>;
 }

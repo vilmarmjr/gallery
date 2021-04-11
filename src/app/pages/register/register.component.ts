@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { EmailAlreadyExistsError } from 'src/app/errors/email-already-exists-error';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -25,10 +24,10 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
-    const { name, email, password } = this.form.getRawValue();
+    const { name, email, password, passwordConfirmation } = this.form.getRawValue();
 
-    this.authService.register(name, email, password).subscribe(result => {
-      if (result instanceof EmailAlreadyExistsError) {
+    this.authService.register(name, email, password, passwordConfirmation).subscribe(result => {
+      if (result instanceof Error) {
         return this.toastrService.error(result.message);
       }
       this.toastrService.success('Conta cadastrada com sucesso!');

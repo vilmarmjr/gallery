@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { EmailAlreadyExistsError } from 'src/app/errors/email-already-exists-error';
 import { InvalidCredentialsError } from 'src/app/errors/invalid-credentials-error';
+import { UnmatchingPasswordsError } from 'src/app/errors/unmatching-passwords-error';
 import { UserModel } from 'src/app/models/user.model';
 import { AuthService } from '../auth.service';
 import { TokenService } from '../token.service';
@@ -43,7 +44,16 @@ export class FakeAuthService implements AuthService {
     return this.getLoggedUser().pipe(map(user => !!user));
   }
 
-  register(name: string, email: string, password: string): Observable<UserModel | EmailAlreadyExistsError> {
+  register(
+    name: string,
+    email: string,
+    password: string,
+    passwordConfirmation: string
+  ): Observable<UserModel | EmailAlreadyExistsError | UnmatchingPasswordsError> {
+    if (password !== passwordConfirmation) {
+      return of(new UnmatchingPasswordsError());
+    }
+
     const users = this.getRegisteredUsers();
     const emailAlreadyExists = users.some(user => user.email === email);
 
