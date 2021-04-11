@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { InvalidCredentialsError } from 'src/app/shared/errors/invalid-credentials-error';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
@@ -12,7 +13,12 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class LoginComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private readonly formBuilder: FormBuilder, private readonly router: Router, private readonly authService: AuthService) {}
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly router: Router,
+    private readonly toastrService: ToastrService,
+    private readonly authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.setForm();
@@ -23,7 +29,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(email, password).subscribe(result => {
       if (result instanceof InvalidCredentialsError) {
-        return alert(result.message);
+        return this.toastrService.warning(result.message);
       }
 
       this.router.navigate(['/albums']);
