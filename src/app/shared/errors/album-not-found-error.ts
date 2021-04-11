@@ -1,6 +1,6 @@
 export class AlbumNotFoundError extends Error {
   constructor() {
-    super('Album not found');
+    super('O álbum informado não foi encontrado');
     this.name = 'AlbumNotFoundError';
   }
 }

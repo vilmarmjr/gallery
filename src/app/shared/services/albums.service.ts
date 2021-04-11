@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { AlbumNotFoundError } from '../errors/album-not-found-error';
 import { AlbumModel } from '../models/album.model';
 
@@ -16,10 +16,6 @@ export class AlbumsService {
   }
 
   fetchAlbumById(id: number): Observable<AlbumModel | AlbumNotFoundError> {
-    return this.httpClient.get<AlbumModel | {}>(`${this.baseUrl}/albums/${id}`).pipe(
-      map(album => {
-        return album === {} ? new AlbumNotFoundError() : (album as AlbumModel);
-      })
-    );
+    return this.httpClient.get<AlbumModel>(`${this.baseUrl}/albums/${id}`).pipe(catchError(() => of(new AlbumNotFoundError())));
   }
 }

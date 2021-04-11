@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { AlbumNotFoundError } from 'src/app/shared/errors/album-not-found-error';
 import { AlbumModel } from 'src/app/shared/models/album.model';
@@ -20,7 +21,9 @@ export class PhotosComponent implements OnInit {
   numberOfPhotosPerAlbum = 50;
 
   constructor(
-    private route: ActivatedRoute,
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    private readonly toastrService: ToastrService,
     private readonly albumsService: AlbumsService,
     private readonly photosService: PhotosService
   ) {}
@@ -41,7 +44,8 @@ export class PhotosComponent implements OnInit {
   private fetchAlbum(): void {
     this.albumsService.fetchAlbumById(this.getAlbumIdFromUrl()).subscribe(result => {
       if (result instanceof AlbumNotFoundError) {
-        return;
+        this.toastrService.error(result.message);
+        return this.router.navigate(['albums']);
       }
       this.album = result;
     });
