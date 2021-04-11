@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { AlbumsService } from 'src/app/shared/services/albums.service';
@@ -16,6 +17,8 @@ export class AlbumsComponent implements OnInit {
   albums$: Observable<AlbumModel[]>;
 
   constructor(
+    private readonly router: Router,
+    private readonly activatedRoute: ActivatedRoute,
     private readonly albumsService: AlbumsService,
     private readonly photosService: PhotosService,
     private readonly authService: AuthService
@@ -23,6 +26,10 @@ export class AlbumsComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchAlbums();
+  }
+
+  navigateToPhotosPage(album: AlbumModel): void {
+    this.router.navigate([album.id, 'photos'], { relativeTo: this.activatedRoute });
   }
 
   private fetchAlbums(): void {

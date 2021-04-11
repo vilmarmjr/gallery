@@ -1,4 +1,4 @@
-<div class="album-container" matRipple>
+<div class="album-container" matRipple (click)="click.emit(album)">
   <img class="album-thumbnail" [src]="album.thumbnailUrl" alt="Album thumbnail" />
   <div class="album-details">
     <span class="album-title">{{ album.title }}</span>

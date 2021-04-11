@@ -6,6 +6,12 @@
   color: $text-color;
   cursor: pointer;
 
+  &:hover {
+    .album-details .album-title {
+      color: $accent-color;
+    }
+  }
+
   .album-thumbnail {
     width: 6.25rem;
   }

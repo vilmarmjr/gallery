@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AlbumModel } from 'src/app/shared/models/album.model';
 
 @Component({
@@ -8,6 +8,7 @@ import { AlbumModel } from 'src/app/shared/models/album.model';
 })
 export class AlbumComponent implements OnInit {
   @Input() album: AlbumModel;
+  @Output() click = new EventEmitter<AlbumModel>();
 
   constructor() {}
 
