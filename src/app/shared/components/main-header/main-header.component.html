@@ -1,8 +1,14 @@
 <header class="main-header-container">
-  <div>
-    <h1 class="title"><ng-content select="[mainHeaderTitle]"></ng-content></h1>
-    <span class="subtitle"><ng-content select="[mainHeaderSubtitle]"></ng-content></span>
+  <div class="left-side">
+    <button *ngIf="showBackButton" mat-icon-button aria-label="Back to the previous page" class="back-button" (click)="back()">
+      <mat-icon color="primary" class="arrow-back">arrow_back</mat-icon>
+    </button>
+    <div>
+      <h1 class="title"><ng-content select="[mainHeaderTitle]"></ng-content></h1>
+      <span class="subtitle"><ng-content select="[mainHeaderSubtitle]"></ng-content></span>
+    </div>
   </div>
+
   <div class="user-details">
     <img class="user-image" alt="User image" src="../../../../assets/images/user.svg" />
     <span class="user-name">username</span>

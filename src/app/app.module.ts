@@ -18,6 +18,7 @@ import { AlbumComponent } from './pages/albums/components/album/album.component'
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatRippleModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, MainComponent, AlbumsComponent, MainHeaderComponent, AlbumComponent, PhotosComponent],
@@ -32,7 +33,8 @@ import { MatRippleModule } from '@angular/material/core';
     ReactiveFormsModule,
     HttpClientModule,
     MatPaginatorModule,
-    MatRippleModule
+    MatRippleModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

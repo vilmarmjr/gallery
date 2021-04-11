@@ -7,15 +7,28 @@
   color: $text-color;
   margin-bottom: 3rem;
 
-  .title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
+  .left-side {
+    display: flex;
+    align-items: center;
 
-  .subtitle {
-    font-weight: 200;
-    font-size: 0.9rem;
+    .back-button {
+      margin-right: 1rem;
+
+      .arrow-back {
+        font-size: 1.7rem;
+      }
+    }
+
+    .title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-weight: 200;
+      font-size: 0.9rem;
+    }
   }
 
   .user-details {

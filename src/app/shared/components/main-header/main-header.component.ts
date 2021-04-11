@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-main-header',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-header.component.scss']
 })
 export class MainHeaderComponent implements OnInit {
+  @Input() showBackButton = false;
 
-  constructor() { }
+  constructor(private readonly location: Location) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  back(): void {
+    this.location.back();
   }
-
 }
