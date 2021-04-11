@@ -3,7 +3,6 @@
 .photos-container {
   display: grid;
   grid-gap: 1em;
-  grid-row-gap: 2rem;
   list-style: none;
   grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
 
@@ -24,6 +23,7 @@
       font-size: 0.8rem;
       overflow: hidden;
       text-overflow: ellipsis;
+      min-height: 2.5rem;
     }
   }
 }
