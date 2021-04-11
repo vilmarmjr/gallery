@@ -24,6 +24,12 @@
   }
 }
 
+@media (max-width: 600px) {
+  .auth-layout-container .card {
+    width: 90%;
+  }
+}
+
 @media (max-width: 800px) {
   .auth-layout-container {
     background-image: none;
