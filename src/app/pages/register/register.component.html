@@ -4,7 +4,7 @@
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Nome</mat-label>
       <input matInput type="text" formControlName="name" />
-      <mat-error *ngIf="form.hasError('required', 'name')">Insira um nome válido</mat-error>
+      <mat-error *ngIf="form.hasError('required', 'name') || form.hasError('notBlank', 'name')">Insira um nome válido</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
@@ -19,6 +19,7 @@
       <mat-label>Senha</mat-label>
       <input matInput type="password" formControlName="password" />
       <mat-error *ngIf="form.hasError('required', 'password')">Insira uma senha válida</mat-error>
+      <mat-error *ngIf="form.hasError('minlength', 'password')">A senha deve ter pelo menos {{ passwordMinLength }} caracteres</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">

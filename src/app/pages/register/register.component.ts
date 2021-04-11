@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
+  passwordMinLength = 6;
 
   constructor(
     private readonly router: Router,
@@ -37,11 +38,18 @@ export class RegisterComponent implements OnInit {
 
   private setForm(): void {
     this.form = this.formBuilder.group({
-      name: [null, Validators.required],
+      name: [null, [Validators.required, this.notBlankValidator.bind(this)]],
       email: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required]],
+      password: [null, [Validators.required, Validators.minLength(this.passwordMinLength)]],
       passwordConfirmation: [null, [Validators.required, this.passwordConfirmationValidator.bind(this)]]
     });
+  }
+
+  private notBlankValidator(control: AbstractControl): ValidationErrors | null {
+    if (control.value && !control.value.trim()) {
+      return { notBlank: true };
+    }
+    return null;
   }
 
   private passwordConfirmationValidator(control: AbstractControl): ValidationErrors | null {
