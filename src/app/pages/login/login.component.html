@@ -1,21 +1,22 @@
-<div class="login-container">
-  <mat-card class="card">
-    <h1>Bem-vindo ao Gallery!</h1>
-    <p>Para visualizar seus álbuns e fotos, faça o login com seu e-mail e senha.</p>
-    <form [formGroup]="form">
-      <mat-form-field appearance="outline" class="form-field">
-        <mat-label>Email</mat-label>
-        <input matInput type="email" formControlName="email" />
-        <mat-error *ngIf="form.hasError('email', 'email') || form.hasError('required', 'email')">
-          Insira um endereço de e-mail válido
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="form-field">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password" />
-        <mat-error *ngIf="form.hasError('required', 'password')">Insira uma senha válida</mat-error>
-      </mat-form-field>
-      <button mat-raised-button color="accent" class="button" [disabled]="form.invalid" (click)="login()">Login</button>
-    </form>
-  </mat-card>
-</div>
+<app-auth-layout class="login-container">
+  <h1>Bem-vindo ao Gallery!</h1>
+  <p>Para visualizar seus álbuns e fotos, faça o login com seu e-mail e senha.</p>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>E-mail</mat-label>
+      <input matInput type="email" formControlName="email" />
+      <mat-error *ngIf="form.hasError('email', 'email') || form.hasError('required', 'email')">
+        Insira um endereço de e-mail válido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Senha</mat-label>
+      <input matInput type="password" formControlName="password" />
+      <mat-error *ngIf="form.hasError('required', 'password')">Insira uma senha válida</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="accent" class="button" [disabled]="form.invalid" (click)="login()">Login</button>
+  </form>
+  <a [routerLink]="['/register']">Ainda não possui uma conta? Criar</a>
+</app-auth-layout>

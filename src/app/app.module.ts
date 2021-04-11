@@ -26,6 +26,8 @@ import { MainHeaderComponent } from './components/main-header/main-header.compon
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { MatPaginatorPtService } from './services/mat-paginator-pt.service';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
+import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
     AlbumComponent,
     PhotosComponent,
     NotFoundComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    AuthLayoutComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

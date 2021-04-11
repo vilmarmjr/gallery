@@ -1,13 +1,9 @@
 @import '../../../assets/styles/colors.scss';
 
-.login-container {
+.register-container {
   h1 {
     font-weight: 500;
-  }
-
-  p {
-    margin-bottom: 1.7rem;
-    color: $text-color;
+    margin-bottom: 2rem;
   }
 
   .form-field,

@@ -1,29 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { EmailAlreadyExistsError } from '../errors/email-already-exists-error';
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error';
 import { UserModel } from '../models/user.model';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly fakeUser: UserModel = {
-    id: 1,
-    name: 'User',
-    email: 'user@user.com'
-  };
-  private readonly fakeUserPassword = '1234';
+  private readonly usersKey = 'users';
   private readonly fakeAuthTokenKey = 'auth_token';
-  private readonly fakeAuthToken =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
 
-  constructor() {}
+  constructor(private readonly tokenService: TokenService) {}
 
   login(email: string, password: string): Observable<string | InvalidCredentialsError> {
-    if (email === this.fakeUser.email && password === this.fakeUserPassword) {
-      localStorage.setItem(this.fakeAuthTokenKey, this.fakeAuthToken);
-      return of(this.fakeAuthToken);
+    const user = this.getRegisteredUsers().find(user => user.email === email && user.password === password);
+
+    if (user) {
+      const fakeToken = this.tokenService.encrypt(JSON.stringify(user));
+      localStorage.setItem(this.fakeAuthTokenKey, fakeToken);
+      return of(fakeToken);
     }
 
     return of(new InvalidCredentialsError());
@@ -34,15 +32,44 @@ export class AuthService {
   }
 
   getLoggedUser(): Observable<UserModel> {
-    const token = localStorage.getItem(this.fakeAuthTokenKey);
+    const fakeToken = localStorage.getItem(this.fakeAuthTokenKey);
 
-    if (token && token === this.fakeAuthToken) {
-      return of(this.fakeUser);
+    if (fakeToken) {
+      return of(JSON.parse(this.tokenService.decrypt(fakeToken)));
     }
     return of(null);
   }
 
   isUserLoggedIn(): Observable<boolean> {
     return this.getLoggedUser().pipe(map(user => !!user));
+  }
+
+  register(name: string, email: string, password: string): Observable<UserModel | EmailAlreadyExistsError> {
+    const users = this.getRegisteredUsers();
+    const emailAlreadyExists = users.some(user => user.email === email);
+
+    if (emailAlreadyExists) {
+      return of(new EmailAlreadyExistsError());
+    }
+
+    const newUser: UserModel = {
+      id: this.generateRandomUserId(),
+      name,
+      email,
+      password
+    };
+
+    localStorage.setItem(this.usersKey, JSON.stringify([...users, newUser]));
+    this.login(email, password);
+    return of(newUser);
+  }
+
+  private getRegisteredUsers(): UserModel[] {
+    const storageContent = localStorage.getItem(this.usersKey);
+    return storageContent ? (JSON.parse(storageContent) as UserModel[]) : [];
+  }
+
+  private generateRandomUserId(): number {
+    return Math.floor(Math.random() * 10) + 1;
   }
 }

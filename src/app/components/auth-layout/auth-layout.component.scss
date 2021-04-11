@@ -1,0 +1,37 @@
+@import '../../../assets/styles/colors.scss';
+
+.auth-layout-container {
+  width: 100vw;
+  height: 100vh;
+  background: $background-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../../assets/images/login-image-left.svg'), url('../../../assets/images/login-image-right.svg');
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: fixed, fixed;
+  background-size: 25rem, 25rem;
+  background-position: left bottom, right bottom;
+
+  .card {
+    width: 37rem;
+    padding: 3rem 2.5rem;
+    margin-bottom: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 800px) {
+  .auth-layout-container {
+    background-image: none;
+  }
+}
+
+@media (max-width: 1440px) {
+  .auth-layout-container {
+    background-size: 15rem;
+  }
+}
