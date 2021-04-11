@@ -1,42 +1,19 @@
 <app-main-header>
   <span mainHeaderTitle>{{ album?.title }}</span>
-  <span mainHeaderSubtitle>ALBUM &bull; 50 PHOTOS</span>
+  <span mainHeaderSubtitle>ALBUM &bull; {{ numberOfPhotosPerAlbum }} PHOTOS</span>
 </app-main-header>
 <ul class="photos-container">
-  <li>
+  <li *ngFor="let photo of photos">
     <figure class="figure">
-      <img src="https://picsum.photos/300/200/?random" alt="" />
-      <figcaption>Vehicula Quam Nibh</figcaption>
-    </figure>
-  </li>
-  <li>
-    <figure class="figure">
-      <img class="image" src="https://picsum.photos/300/200/?random" alt="" />
-      <figcaption class="caption">Vehicula Quam Nibh</figcaption>
-    </figure>
-  </li>
-  <li>
-    <figure class="figure">
-      <img src="https://picsum.photos/300/200/?random" alt="" />
-      <figcaption>Vehicula Quam Nibh</figcaption>
-    </figure>
-  </li>
-  <li>
-    <figure class="figure">
-      <img src="https://picsum.photos/300/200/?random" alt="" />
-      <figcaption>Vehicula Quam Nibh</figcaption>
-    </figure>
-  </li>
-  <li>
-    <figure class="figure">
-      <img src="https://picsum.photos/300/200/?random" alt="" />
-      <figcaption>Vehicula Quam Nibh</figcaption>
-    </figure>
-  </li>
-  <li>
-    <figure class="figure">
-      <img src="https://picsum.photos/300/200/?random" alt="" />
-      <figcaption>Vehicula Quam Nibh</figcaption>
+      <img [src]="photo.thumbnailUrl" [alt]="photo.title" />
+      <figcaption>{{ photo.title }}</figcaption>
     </figure>
   </li>
 </ul>
+<mat-paginator
+  [length]="numberOfPhotosPerAlbum"
+  [pageSize]="photos?.length"
+  [hidePageSize]="true"
+  (page)="fetchPhotosFromPageEvent($event)"
+>
+</mat-paginator>
