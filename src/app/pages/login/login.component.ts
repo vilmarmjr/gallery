@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { InvalidCredentialsError } from 'src/app/errors/invalid-credentials-error';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -28,8 +27,8 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.form.getRawValue();
 
     this.authService.login(email, password).subscribe(result => {
-      if (result instanceof InvalidCredentialsError) {
-        return this.toastrService.warning(result.message);
+      if (result instanceof Error) {
+        return this.toastrService.error(result.message);
       }
 
       this.router.navigate(['/albums']);

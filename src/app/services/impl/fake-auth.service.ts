@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { EmailAlreadyExistsError } from 'src/app/errors/email-already-exists-error';
 import { InvalidCredentialsError } from 'src/app/errors/invalid-credentials-error';
 import { UnmatchingPasswordsError } from 'src/app/errors/unmatching-passwords-error';
+import { UserNotFoundError } from 'src/app/errors/user-not-found-error';
 import { UserModel } from 'src/app/models/user.model';
 import { AuthService } from '../auth.service';
 import { TokenService } from '../token.service';
@@ -15,16 +16,20 @@ export class FakeAuthService implements AuthService {
 
   constructor(private readonly tokenService: TokenService) {}
 
-  login(email: string, password: string): Observable<string | InvalidCredentialsError> {
-    const user = this.getRegisteredUsers().find(user => user.email === email && user.password === password);
+  login(email: string, password: string): Observable<string | InvalidCredentialsError | UserNotFoundError> {
+    const user = this.getRegisteredUsers().find(user => user.email === email);
 
-    if (user) {
-      const fakeToken = this.tokenService.encrypt(JSON.stringify(user));
-      localStorage.setItem(this.fakeAuthTokenKey, fakeToken);
-      return of(fakeToken);
+    if (!user) {
+      return of(new UserNotFoundError());
     }
 
-    return of(new InvalidCredentialsError());
+    if (user.password !== password) {
+      return of(new InvalidCredentialsError());
+    }
+
+    const fakeToken = this.tokenService.encrypt(JSON.stringify(user));
+    localStorage.setItem(this.fakeAuthTokenKey, fakeToken);
+    return of(fakeToken);
   }
 
   logout(): Observable<void> {
