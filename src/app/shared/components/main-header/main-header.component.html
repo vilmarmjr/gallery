@@ -1,6 +1,13 @@
 <header class="main-header-container">
   <div class="left-side">
-    <button *ngIf="showBackButton" mat-icon-button aria-label="Back to the previous page" class="back-button" (click)="back()">
+    <button
+      *ngIf="showBackButton"
+      mat-icon-button
+      aria-label="Voltar para a página anterior"
+      matTooltip="Voltar para a página anterior"
+      class="back-button"
+      (click)="back()"
+    >
       <mat-icon color="primary" class="arrow-back">arrow_back</mat-icon>
     </button>
     <div>
@@ -10,7 +17,7 @@
   </div>
 
   <div class="right-side" [matMenuTriggerFor]="menu">
-    <img class="user-image" alt="User image" src="../../../../assets/images/user.svg" />
+    <img class="user-image" alt="Avatar" src="../../../../assets/images/user.svg" />
     <mat-icon class="expand-more">expand_more</mat-icon>
   </div>
   <mat-menu #menu="matMenu" xPosition="before" class="custom-menu">
@@ -23,7 +30,7 @@
     </div>
     <button mat-menu-item (click)="logout()">
       <mat-icon>logout</mat-icon>
-      <span>Logout</span>
+      <span>Sair</span>
     </button>
   </mat-menu>
 </header>

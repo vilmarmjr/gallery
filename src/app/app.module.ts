@@ -16,11 +16,13 @@ import { PhotosComponent } from './pages/photos/photos.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlbumComponent } from './pages/albums/components/album/album.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ToastrModule } from 'ngx-toastr';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatPaginatorPtService } from './shared/services/mat-paginator-pt.service';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, MainComponent, AlbumsComponent, MainHeaderComponent, AlbumComponent, PhotosComponent],
@@ -38,9 +40,10 @@ import { ToastrModule } from 'ngx-toastr';
     MatRippleModule,
     MatIconModule,
     MatMenuModule,
+    MatTooltipModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorPtService }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

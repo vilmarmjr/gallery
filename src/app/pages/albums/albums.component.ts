@@ -14,7 +14,7 @@ import { AlbumModel } from '../../shared/models/album.model';
   providers: [AlbumsService, PhotosService]
 })
 export class AlbumsComponent implements OnInit {
-  albums$: Observable<AlbumModel[]>;
+  albums: AlbumModel[];
 
   constructor(
     private readonly router: Router,
@@ -33,10 +33,13 @@ export class AlbumsComponent implements OnInit {
   }
 
   private fetchAlbums(): void {
-    this.albums$ = this.authService.getLoggedUser().pipe(
-      mergeMap(user => this.albumsService.fetchAlbums(user.id)),
-      mergeMap(albums => forkJoin(albums.map(this.getAlbumWithThumbnail.bind(this))))
-    );
+    this.authService
+      .getLoggedUser()
+      .pipe(
+        mergeMap(user => this.albumsService.fetchAlbums(user.id)),
+        mergeMap(albums => forkJoin(albums.map(this.getAlbumWithThumbnail.bind(this))))
+      )
+      .subscribe(albums => (this.albums = albums));
   }
 
   private getAlbumWithThumbnail(album: AlbumModel): Observable<AlbumModel> {
