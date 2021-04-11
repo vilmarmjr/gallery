@@ -4,6 +4,8 @@ This is a front-end challenge implemented with Angular.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
 
+#### [Live preview](https://juniormendes96.github.io/gallery)
+
 ## The challenge
 
 Implement an application that consumes an API REST.
