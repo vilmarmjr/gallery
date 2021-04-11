@@ -23,9 +23,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ToastrModule } from 'ngx-toastr';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorPtService } from './shared/services/mat-paginator-pt.service';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, MainComponent, AlbumsComponent, MainHeaderComponent, AlbumComponent, PhotosComponent],
+  declarations: [AppComponent, LoginComponent, MainComponent, AlbumsComponent, MainHeaderComponent, AlbumComponent, PhotosComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

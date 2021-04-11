@@ -1,0 +1,27 @@
+@import '../../../assets/styles/colors.scss';
+
+.not-found-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: $background-color;
+  flex-direction: column;
+
+  h1 {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    margin-top: 0.2rem;
+    color: $primary-color;
+    display: inline-block;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
