@@ -31,17 +31,39 @@
     }
   }
 
-  .user-details {
+  .right-side {
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     .user-image {
       border-radius: 50%;
     }
 
+    .expand-more {
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+::ng-deep .custom-menu {
+  .user-details {
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+
+    .user-icon {
+      margin-right: 1rem;
+    }
+
     .user-name {
-      margin-left: 1rem;
-      font-size: 1.2rem;
+      display: block;
+      font-weight: 500;
+      min-width: 13.7rem;
+    }
+
+    .user-email {
+      color: $text-color;
     }
   }
 }

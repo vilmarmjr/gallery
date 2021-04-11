@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, MainComponent, AlbumsComponent, MainHeaderComponent, AlbumComponent, PhotosComponent],
@@ -34,7 +35,8 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     MatPaginatorModule,
     MatRippleModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

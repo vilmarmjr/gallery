@@ -9,8 +9,21 @@
     </div>
   </div>
 
-  <div class="user-details">
+  <div class="right-side" [matMenuTriggerFor]="menu">
     <img class="user-image" alt="User image" src="../../../../assets/images/user.svg" />
-    <span class="user-name">username</span>
+    <mat-icon class="expand-more">expand_more</mat-icon>
   </div>
+  <mat-menu #menu="matMenu" xPosition="before" class="custom-menu">
+    <div class="user-details">
+      <mat-icon class="user-icon">person</mat-icon>
+      <div>
+        <span class="user-name">User</span>
+        <span class="user-email">user@user.com</span>
+      </div>
+    </div>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
 </header>
