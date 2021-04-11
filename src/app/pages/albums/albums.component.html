@@ -1,8 +1,8 @@
 <app-main-header>
   <span mainHeaderTitle>MEUS ÁLBUNS</span>
-  <span mainHeaderSubtitle>INÍCIO &bull; 10 ÁLBUNS</span>
+  <span mainHeaderSubtitle>INÍCIO &bull; {{ numberOfAlbums }} ÁLBUNS</span>
 </app-main-header>
 <div class="albums-container">
   <app-album *ngFor="let album of albums" [album]="album" (click)="navigateToPhotosPage($event)"></app-album>
 </div>
-<mat-paginator [length]="10" [pageSize]="albums?.length" [hidePageSize]="true"></mat-paginator>
+<mat-paginator [length]="numberOfAlbums" [pageSize]="albums?.length" [hidePageSize]="true"></mat-paginator>

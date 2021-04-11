@@ -15,6 +15,7 @@ import { AlbumModel } from '../../shared/models/album.model';
 })
 export class AlbumsComponent implements OnInit {
   albums: AlbumModel[];
+  numberOfAlbums = 10;
 
   constructor(
     private readonly router: Router,
