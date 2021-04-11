@@ -1,16 +1,4 @@
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class TokenService {
-  constructor() {}
-
-  encrypt(data: any): string {
-    return btoa(data);
-  }
-
-  decrypt(token: string): any {
-    return atob(token);
-  }
+export abstract class TokenService {
+  abstract encrypt(data: any): string;
+  abstract decrypt(token: string);
 }

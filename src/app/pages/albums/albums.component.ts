@@ -1,17 +1,16 @@
+import { PhotosService } from 'src/app/services/photos.service';
+import { AlbumsService } from 'src/app/services/albums.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { AlbumModel } from 'src/app/models/album.model';
-import { AlbumsService } from 'src/app/services/albums.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { PhotosService } from 'src/app/services/photos.service';
 
 @Component({
   selector: 'app-albums',
   templateUrl: './albums.component.html',
-  styleUrls: ['./albums.component.scss'],
-  providers: [AlbumsService, PhotosService]
+  styleUrls: ['./albums.component.scss']
 })
 export class AlbumsComponent implements OnInit {
   albums: AlbumModel[];

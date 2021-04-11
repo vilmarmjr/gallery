@@ -11,8 +11,7 @@ import { PhotosService } from 'src/app/services/photos.service';
 @Component({
   selector: 'app-photos',
   templateUrl: './photos.component.html',
-  styleUrls: ['./photos.component.scss'],
-  providers: [AlbumsService, PhotosService]
+  styleUrls: ['./photos.component.scss']
 })
 export class PhotosComponent implements OnInit {
   album: AlbumModel;

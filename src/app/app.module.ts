@@ -24,10 +24,18 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MainHeaderComponent } from './components/main-header/main-header.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import { MatPaginatorPtService } from './services/mat-paginator-pt.service';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { MatPaginatorPtService } from './services/impl/mat-paginator-pt.service';
+import { AlbumsService } from './services/albums.service';
+import { JsonPlaceholderAlbumsService } from './services/impl/json-placeholder-albums.service';
+import { PhotosService } from './services/photos.service';
+import { JsonPlaceholderPhotosService } from './services/impl/json-placeholder-photos.service';
+import { FakeAuthService } from './services/impl/fake-auth.service';
+import { AuthService } from './services/auth.service';
+import { TokenService } from './services/token.service';
+import { Base64TokenService } from './services/impl/base64-token.service';
 
 @NgModule({
   declarations: [
@@ -61,7 +69,13 @@ import { RegisterComponent } from './pages/register/register.component';
     MatProgressSpinnerModule,
     ToastrModule.forRoot()
   ],
-  providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorPtService }],
+  providers: [
+    { provide: MatPaginatorIntl, useClass: MatPaginatorPtService },
+    { provide: AlbumsService, useClass: JsonPlaceholderAlbumsService },
+    { provide: PhotosService, useClass: JsonPlaceholderPhotosService },
+    { provide: AuthService, useClass: FakeAuthService },
+    { provide: TokenService, useClass: Base64TokenService }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
