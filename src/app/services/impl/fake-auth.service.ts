@@ -79,8 +79,8 @@ export class FakeAuthService implements AuthService {
   }
 
   private getRegisteredUsers(): UserModel[] {
-    const storageContent = localStorage.getItem(this.usersKey);
-    return storageContent ? (JSON.parse(storageContent) as UserModel[]) : [];
+    const storageContent = localStorage.getItem(this.usersKey) || '[]';
+    return JSON.parse(storageContent);
   }
 
   private generateRandomUserId(): number {
