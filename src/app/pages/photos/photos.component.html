@@ -6,7 +6,7 @@
 <ul class="photos-container" *ngIf="photos">
   <li *ngFor="let photo of photos">
     <figure class="figure">
-      <img [src]="photo.thumbnailUrl" [alt]="photo.title" />
+      <img [src]="photo.url" [alt]="photo.title" />
       <figcaption>{{ photo.title }}</figcaption>
     </figure>
   </li>

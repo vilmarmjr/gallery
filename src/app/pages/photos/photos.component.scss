@@ -2,18 +2,15 @@
 
 .photos-container {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 90%;
-  gap: 1em;
+  grid-gap: 1em;
   grid-row-gap: 2rem;
   list-style: none;
-  grid-auto-flow: initial;
-  grid-template-columns: repeat(auto-fit, minmax(auto, 20em));
+  grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
 
   .figure {
     display: grid;
     grid-template-rows: 15em 1fr;
-    gap: 1em;
+    gap: 0.5em;
 
     img {
       width: 100%;
@@ -28,11 +25,5 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-  }
-}
-
-@media (max-width: 850px) {
-  .photos-container {
-    justify-content: center;
   }
 }
