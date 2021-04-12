@@ -49,16 +49,7 @@ export class FakeAuthService implements AuthService {
     return this.getLoggedUser().pipe(map(user => !!user));
   }
 
-  register(
-    name: string,
-    email: string,
-    password: string,
-    passwordConfirmation: string
-  ): Observable<UserModel | EmailAlreadyExistsError | UnmatchingPasswordsError> {
-    if (password !== passwordConfirmation) {
-      return of(new UnmatchingPasswordsError());
-    }
-
+  register(name: string, email: string, password: string): Observable<UserModel | EmailAlreadyExistsError | UnmatchingPasswordsError> {
     const users = this.getRegisteredUsers();
     const emailAlreadyExists = users.some(user => user.email === email);
 

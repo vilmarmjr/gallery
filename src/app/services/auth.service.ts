@@ -13,7 +13,6 @@ export abstract class AuthService {
   abstract register(
     name: string,
     email: string,
-    password: string,
-    passwordConfirmation: string
+    password: string
   ): Observable<UserModel | EmailAlreadyExistsError | UnmatchingPasswordsError>;
 }

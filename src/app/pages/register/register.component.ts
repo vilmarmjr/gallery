@@ -25,9 +25,9 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
-    const { name, email, password, passwordConfirmation } = this.form.getRawValue();
+    const { name, email, password } = this.form.getRawValue();
 
-    this.authService.register(name, email, password, passwordConfirmation).subscribe(result => {
+    this.authService.register(name, email, password).subscribe(result => {
       if (result instanceof Error) {
         return this.toastrService.error(result.message);
       }
@@ -40,23 +40,13 @@ export class RegisterComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: [null, [Validators.required, this.notBlankValidator.bind(this)]],
       email: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required, Validators.minLength(this.passwordMinLength)]],
-      passwordConfirmation: [null, [Validators.required, this.passwordConfirmationValidator.bind(this)]]
+      password: [null, [Validators.required, Validators.minLength(this.passwordMinLength)]]
     });
   }
 
   private notBlankValidator(control: AbstractControl): ValidationErrors | null {
     if (control.value && !control.value.trim()) {
       return { notBlank: true };
-    }
-    return null;
-  }
-
-  private passwordConfirmationValidator(control: AbstractControl): ValidationErrors | null {
-    if (!this.form) return null;
-
-    if (control.value !== this.form.get('password').value) {
-      return { passwordsNotMatching: true };
     }
     return null;
   }
